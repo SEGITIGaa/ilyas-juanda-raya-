@@ -8,7 +8,7 @@ public class Kalkulator {
         System.out.println("======================================");
         System.out.println("SELAMAT DATANG DI KALKULATOR SEDERHANA");
         System.out.println("======================================");
-        while (continueCalculating) {
+        do {
             System.out.print("Masukkan angka pertama: ");
             double num1 = scanner.nextDouble();
 
@@ -48,6 +48,7 @@ public class Kalkulator {
                     System.out.println("Operasi tidak valid.");
                     continue;
             }
+
             System.out.println("======================================");
 
             System.out.println("Hasil operasi: " + result);
@@ -56,9 +57,9 @@ public class Kalkulator {
             String continueChoice = scanner.next().toLowerCase();
             if (!continueChoice.equals("y")) {
                 continueCalculating = false;
-                System.out.println("makasi udah pake kalkulator nyaa!");
-            }
-        }
+                System.out.println("makasi udah pake kalkulator nyaa!, pinjem dulu seratus");
+            };
+        } while (continueCalculating);
 
         scanner.close();
     }
