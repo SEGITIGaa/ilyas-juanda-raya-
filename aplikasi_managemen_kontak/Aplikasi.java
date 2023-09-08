@@ -1,10 +1,27 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Aplikasi {
+    private static final String NAMA_FILE = "kontak.csv";
+    private static ArrayList<Kontak> daftarKontak = new ArrayList<>(); // Pindahkan deklarasi di sini
+
+    private static void simpanKontakKeFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(NAMA_FILE))) {
+            for (Kontak kontak : daftarKontak) {
+                writer.write(kontak.getNama() + "," + kontak.getNomorTelepon() + "," + kontak.getEmail());
+                writer.newLine();
+            }
+            System.out.println("Kontak berhasil disimpan ke dalam file.");
+        } catch (IOException e) {
+            System.err.println("Terjadi kesalahan saat menyimpan kontak ke dalam file.");
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Kontak> daftarKontak = new ArrayList<>();
 
         int pilihan;
         do {
@@ -57,6 +74,7 @@ public class Aplikasi {
                     }
                     break;
                 case 5:
+                    simpanKontakKeFile(); // Menyimpan kontak ke dalam file sebelum keluar
                     System.out.println("Terima kasih!");
                     break;
                 default:
@@ -73,14 +91,11 @@ class Kontak {
     private String nomorTelepon;
     private String email;
 
-    // Konstruktor
     public Kontak(String nama, String nomorTelepon, String email) {
         this.nama = nama;
         this.nomorTelepon = nomorTelepon;
         this.email = email;
     }
-
-    // Getter dan setter untuk atribut-atribut
     public String getNama() {
         return nama;
     }
