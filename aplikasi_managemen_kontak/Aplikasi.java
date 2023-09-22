@@ -46,6 +46,7 @@ public class Aplikasi {
                     Kontak kontakBaru = new Kontak(nama, nomorTelepon, email);
                     daftarKontak.add(kontakBaru);
                     System.out.println("====== Kontak berhasil ditambahkan! =====");
+                     simpanKontakKeFile(); // Menyimpan kontak ke dalam file sebelum keluar
                     break;
                 case 2:
                     System.out.print("Masukkan Nama Kontak yang akan dihapus: ");
@@ -57,6 +58,7 @@ public class Aplikasi {
                             break;
                         }
                     }
+                     simpanKontakKeFile(); // Menyimpan kontak ke dalam file sebelum keluar
                     break;
                 case 3:
                     System.out.print("Masukkan Nomor Telepon Kontak yang akan dihapus: ");
